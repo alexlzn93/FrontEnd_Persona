@@ -1,0 +1,45 @@
+<h1 class="titulo">Registrate</h1>
+<div class="formulario"  >
+<form [formGroup]="personaForm" (ngSubmit)="guardar">
+<div class="form-group">
+  <label >Nombre</label>
+  <input type="text" formControlName="nombre" class="form-control">
+  <label >Apellido</label>
+  <input type="text" formControlName="apellido" class="form-control">
+  <label >Nacionalidad</label>
+  <input type="text" formControlName="nacionalidad" class="form-control">
+  <label >Edad</label>
+  <input type="number" formControlName="edad" class="form-control">
+<br>
+  <button (click)='guardar()' type="submit" class="btn btn-primary" [disabled]="personaForm.invalid">Guardar</button>
+
+</div>
+</form>
+</div>
+<div class="tabla">
+<table class="table table-bordered table-striped table-light" > <!-->si la lista es >0 se muestra</!-->
+  <thead>
+    <tr class="table-info">
+
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nacionalidad</th>
+      <th>Edad</th>
+      <th>Opciones</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of listPersonas">
+
+      <td class="table-info">{{persona.nombre}}</td>
+      <td class="table-info">{{persona.apellido}}</td>
+      <td class="table-info">{{persona.nacionalidad}}</td>
+      <td class="table-info">{{persona.edad}}</td>
+      <button type="button" class="btn btn-succes" (click)="editarPersona(persona)">Editar</button>
+      <button type="button" class="btn btn-danger" (click)="eliminarPersona(persona.id)">Eliminar</button>
+
+    </tr>
+  </tbody>
+</table>
+</div>
